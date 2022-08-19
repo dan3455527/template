@@ -1,0 +1,12 @@
+del *.log
+del *.synctex(busy)
+del *.aux
+del *.lof
+del *.lot
+del *.toc
+del *.synctex
+del *.bak
+del *.bbl
+del *.blg
+del *.pdf
+del chapters\*.bak

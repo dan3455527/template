@@ -1,0 +1,144 @@
+% 中文摘要      I_chabstract.tex
+% 英文摘要      II_enabstract.tex
+% 誌謝          III_acknowledge.tex
+
+% 主程式                00_masterthesis.tex
+% 緒論                  01_introduction.tex
+% 背景知識與相關文獻    02_relatedwork.tex
+% 問題分析              03_analysis
+% 研究方法              04_method.tex
+% 實驗與結果分析        05_experiment.tex
+% 結論                  06_conclusion.tex
+% 附錄                  07_appendix.tex
+
+% clean.bat 為清除、複製檔案於 C:\xtemp 使用。
+% IEEEtran.sty 為文獻格式必須檔。
+% *.bib 為文獻檔
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt,oneside,openany,a4paper,draft=FALSE]{book}
+
+% 套件集
+%\usepackage[left=3cm,top=3cm,nohead]{geometry}
+%\usepackage[total={15cm,24cm}, top=35mm, left=36mm, includefoot]{geometry}
+\usepackage[total={15cm,24cm}, top=30mm, left=30mm, includefoot]{geometry}  %版面格式
+
+\usepackage{times}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{comment}
+\usepackage{bm}
+%\usepackage[usenames,dvipsnames]{color}     %自訂文字顏色
+\usepackage{graphicx,subfigure,float}       % 所有圖片均為浮動狀態，可為圖片編碼
+\usepackage{amsmath,amssymb}                % 數學式
+%\usepackage{color,colortbl,lettrine,wrapfig}
+%\usepackage{epstopdf} %EPS轉PDF功能
+%\usepackage[bookmarks=false,colorlinks=true,breaklinks=true]{hyperref} %PDF書籤與連結功能
+\usepackage[numbered]{bookmark} %PDF書籤與連結功能
+\usepackage[titletoc]{appendix}
+%\usepackage{breakurl}
+
+% 文獻套件
+\usepackage[square,numbers]{natbib} %中英文文獻
+%\usepackage{natbib}
+\usepackage{bibentry}
+%\usepackage{biblatex}
+%\usepackage[notocbib]{apacite}     % use APA citation
+%\usepackage{IEEEtran}   %IEEE文獻
+\usepackage[notindex,nottoc,notlot,notlof]{tocbibind}
+
+\usepackage{longtable}
+\usepackage{url}
+\usepackage{wallpaper}     % 浮水印
+
+% 表格套件
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{rotating}   % 旋轉表格，將某頁版面由直排轉為橫排,適合用於旋轉占滿一頁的表格或圖形
+\usepackage{booktabs}
+%\usepackage{graphicx,floatrow}
+
+% 數學
+\usepackage{amsthm}     % 排版數學文稿的定理與定義
+\usepackage{amsmath}
+\usepackage{enumerate}  % 條列項目 (阿拉伯數字編號)
+
+%% 中文專用
+\usepackage{fontspec} %加這個就可以設定字體
+\usepackage{xeCJK} %讓中英文字體分開設置
+
+%-----
+
+\input{chapters/00_macros}%% 修改中文標題與格式定義
+\date{2013.9.18}    %版本日期
+
+%%%%% 論文開始 %%%%%
+\begin{document}
+
+%%  封面
+\input{chapters/I_cover}
+
+\CenterWallPaper{0.17}{graphs/logo/logowatermark.eps} %浮水印
+%===============================================================
+%%%%%%%%%%%%%%%%---------- 中文摘要
+\frontmatter % 羅馬文頁碼
+\newpage
+\input{chapters/I_chabstract}
+
+
+
+%%%%%%%%%%%%%%%%---------- 英文摘要
+\newpage
+\input{chapters/II_enabstract}
+
+%%%%%%%%%%%%%%%%---------- 致謝
+\newpage
+\input{chapters/III_acknowledge}
+
+%%  目錄
+\newpage
+\input{chapters/IV_contents}
+
+%%%%%%%%%%%%%%%%%%%% 碩士論文內文開始 %%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%---------- 開始章節
+\cleardoublepage
+\mainmatter % 阿拉伯文頁碼
+\fontsize{12}{21pt}\selectfont
+
+%%  緒論
+\input{chapters/01_introduction}
+
+%%  背景知識與相關文獻
+\input{chapters/02_relatedwork}
+
+%%  問題定義與分析
+\input{chapters/03_analysis}
+
+%%  研究設計與方法
+\input{chapters/04_method}
+
+%%  實驗與結果分析
+\input{chapters/05_experiments}
+
+%%  結論
+\input{chapters/06_conclusion}
+
+%%  文獻
+\bibliographystyle{IEEEtran}
+%    \bibliographystyle{plain}
+%    \bibliographystyle{apa}
+%    \bibliographystyle{apacite}\renewcommand{\bibname}{參考文獻}
+\bibliography{citations/ref_title1,citations/ref_title2}
+
+%%%%%%%%%%%%%%%%---------- 附錄
+\begin{appendices}
+	\appendix
+	%        \noappendicestocpagenum
+	\titleformat{\chapter}[display]{\center\LARGE\sf}{附錄 \thechapter}{0.2cm}{}  % 設計附錄標題式樣,標題置中
+	\input{chapters/07_appendix_equations} %% appendix-A
+	\input{chapters/08_appendix_tables} %% appendix-A
+\end{appendices}
+
+%===============================================================
+\end{document}

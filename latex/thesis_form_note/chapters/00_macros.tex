@@ -1,0 +1,80 @@
+% 設定『目錄』名稱
+\renewcommand{\contentsname}{目錄}
+\renewcommand{\listfigurename}{圖目錄}
+\renewcommand{\listtablename}{表目錄}
+%\renewcommand{\appendixtocname}{附錄}   % if \appendix  is used.
+\renewcommand{\appendixname}{附錄}   % if \appendix  is used.
+\renewcommand{\tablename}{表}
+\renewcommand{\figurename}{圖}
+\renewcommand{\bibname}{參考文獻}
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links (change box color with linkbordercolor)
+    citecolor=black,          % color of links to bibliography
+    filecolor=cyan,         % color of file links
+    urlcolor=magenta        % color of external links
+}
+
+%\newcommand{\img}{C:/Dropbox/ntpu_thesis/plot/}%如果所有圖檔存放在其他地方,先定義位置
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter .\ #1}{}}  % 去除章編號前後的字
+\titleformat{\chapter}[display]{\center\LARGE\sf}{第\ \thechapter\ 章}{0.2cm}{}  %設計章節標題式樣,標題置中
+\titlespacing{\chapter}{0pt}{-50pt}{25pt}   %設計章節標題式樣，控制間距
+%\fancyhead[RO,RE]{\leftmark}   %章節標題於頁眉/頁足上
+\fancyfoot[CO,CE]{\thepage}
+
+\renewcommand{\headrulewidth}{0pt}  % 頁眉下方的橫線
+%\renewcommand{\footrulewidth}{0pt} % 設定頁首多一條粗細是 0.4 pt 的水平線
+
+% 設定itemize符號
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+
+%設定英文字型，不設的話就會使用預設的字型
+\setmainfont{Times New Roman}
+
+% 設定中文字體
+\setCJKmainfont{標楷體} %設定中文為系統上的字型，而英文不去更動，使用原TeX字型
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt %這兩行一定要加，中文才能自動換行
+
+
+\renewcommand{\baselinestretch}{1.25}   %依照文章預設行距增加為 1.25倍（不同字型大小行距值，加大為1.25倍）
+
+% 以下是目錄章節後面打點格式的設定：http://vardesa.blog.hexun.com.tw/58537832_d.html
+\makeatletter
+\def\@bfdottedtocline#1#2#3#4#5{%
+\ifnum #1>\c@tocdepth \else
+\vskip \z@ \@plus.2\p@
+{\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
+\parindent #2\relax\@afterindenttrue
+\interlinepenalty\@M
+\leavevmode \bfseries
+\@tempdima #3\relax
+\advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+{#4}\normalfont\nobreak
+\leaders\hbox{$\m@th
+\mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+mu$}\hfill
+\nobreak
+\hb@xt@\@pnumwidth{\hfil\normalfont \normalcolor #5}%
+\par}%
+\fi}
+\renewcommand*\l@chapter{\@bfdottedtocline{0}{0em}{1.5em}}
+\makeatother
+
+% 定義『各章節標題、圖表、頁尾註記』字型
+
+\theoremstyle{plain}   % 排版格式，{plain}:最醒目格式
+\newtheorem{thm}{定理}  % 將 Theorem 改為國字「定理」
+\newtheorem{thmm}{定義}
+
+
+%
+%   調整內縮長度(依據學校規定與不同版面、字型調整)
+%
+\parindent=0.85cm
